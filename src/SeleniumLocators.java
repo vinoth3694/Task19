@@ -1,131 +1,122 @@
-package seleniumlocators;
-import static org.testng.Assert.assertEquals;
 
-import java.time.Duration;
+	Elements on Guvi Register web page
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
+	1. Guvi Logo (clicking on this navigates to home page)
 
-import org.testng.annotations.Test;
-
-public class Program1 {
+		Linktext: GUVI logo
+		xpath: //img[@alt='GUVI logo']
 		
-	@Test
-	public void testSet() throws Exception {
-				// Launch a browser
-			WebDriver d= new ChromeDriver();
-			d.manage().window().maximize();
-			d.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
-			d.manage().deleteAllCookies();
-	
-			// Launch the url
-			d.get("https://jqueryui.com/");
+	2. Sign-up with Google (Navigates to sigh in with google account)
 			
-			//click on datepicker
-			d.findElement(By.xpath("//a[contains(text(),'Datepicker')]")).click();
+			id		: google-button - worked
 			
-			//verify the title of page 
-			assertEquals(d.getTitle(),"Datepicker | jQuery UI");
+			xpath	: 	//a[@id='google-button']
+						//a[@class='btn btn-outline-google']
+						//div[@data-onsuccess='onSignIn']/a
+						//div[@class='google-sign-in']/a
+						
+			css		: a[id='google-button']
+					  a[class='btn btn-outline-google']
+		
+					
+	3. First Name
 			
-			//switching focus to inside frame
-			WebElement stringFrame =d.findElement(By.className("demo-frame"));
-			d.switchTo().frame(stringFrame);
+			id		: firstName
+			tagName = input
 			
-			//Click on Date field
-			WebElement dateField = d.findElement(By.xpath("//input[@id='datepicker']"));
-			dateField.click();
+			css 	#firstName
+					.form-group input[id='firstName']
+					.form-group input[wfd-id='id0']
 			
-			//Click on next icon to change the current month to next month
-			d.findElement(By.xpath("//a[@data-handler='next']")).click();
+			xpath 	= //input[@id='firstName']
+					= (//input[@placeholder='Enter name'])[1]
+					= (//input[@class='form-control'])[1]
+					  (//input[@type='text'])[1]
+					  (//input)[1]
+
+	4. Last Name
 			
-			//Click on date 22 in the calender pop-up
-			WebElement date22 = d.findElement(By.xpath("//a[@data-date='22']"));
-			date22.click();
+			id	: lastName
+			xpath	: //input[@id='lastName']
+					  (//input[@placeholder='Enter name'])[2]
+					  (//input[@class='form-control'])[2]
+					  (//input[@type='text'])[2]
+					  (//input)[2]
+					  
+			CSS 	:	#lastName
+						input[id='lastName']
+						.form-group input[id='lastName']
+						.form-group input[wfd-id='id1']
+						
+
+	5. Email
 			
-			//printing the selected date by getting attribute
-			String selectedDate = dateField.getAttribute("value");
+			id: emailInput
+			class: form-control is-invalid
 			
-			System.out.println("The Selected Date is: "+ selectedDate);
+			xpath : //input[@type='email']
+					//input[@class='form-control is-invalid']
+					//input[@id='emailInput']
+					//input[@placeholder='Enter email']
+					(//input)[3]
+					
+			CSS:	#emailgroup input[type='email']
+					#emailgroup input[class='form-control is-invalid']
+					.form-group input[id='emailInput']
+					.form-group input[placeholder='Enter email']
+
+	6. Password
+
+			id	: passwordInput
+			xpath:  (//input[@class='form-control'])[3]
+					(//input[@type='password'])[1]
+					(//input[@class='form-control'])[3]
+					//input[@placeholder='Password']
+					(//input)[4]
+					
+			CSS: 	#passwordInput
+					.form-group input[placeholder='Password']
+					.form-group input[id='passwordInput']
+					.form-group input[id='passwordInput']
+					.form-group input[type='password']
+					.form-group input[wfd-id='id3']
 			
-		//Close the browser	
-		d.quit();
-	}
+	7. Mobile Number
+
+			id 	: mobileNumberInput
+			name: mobileNumberInput
+			xpath:  (//input[@class='form-control'])[4]
+					(//input[@type='tel'])[1]
+					//input[@id='mobileNumberInput']
+					(//input)[5]
+					//input[@name='mobileNumberInput']
+					//input[@placeholder='Mobile number']
+					//input[@maxlength='20']
+					//input[@minlength='10']
+					
+			CSS: 	#mobileNumberInput
+					.form-group input[name='mobileNumberInput']
+					.form-group input[placeholder='Mobile number']
+					
+
+	8. Sign up button
+			xpath: 	//button[@type='button']
+					//button[@id='signup']
+					(//button[@class='btn btn-primary'])[1]
+					//div[@class='btn-wrap']/button
+					//button[contains(text(),'Sign up')]
+					
+			CSS:	#signup
+					.btn-wrap button[id='signup']
+					.btn-wrap button[type='button']
+					.btn-wrap button[class='btn btn-primary']
+					
+	9. Login
+			LinkText: Log in
+			xpath:	//a[contains(.,'Log in')]
+					//a[contains(text(),'Log in')]
 }
--------------------------------------------------------------------------------------------------------------------------------
-  2.program
-  package seleniumlocators;
-import static org.testng.Assert.assertEquals;
 
-import java.time.Duration;
-
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.Test;
-
-public class Program2 {
-	
-	@Test
-	public void testSet() throws Exception {
-				// Launch a browser
-			WebDriver d= new ChromeDriver();
-			d.manage().window().maximize();
-			d.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
-			d.manage().deleteAllCookies();
-	
-			// Launch the url
-			d.get("https://www.guvi.in/");
-			
-			//click on Signup button
-			d.findElement(By.xpath("//a[@class='nav-link btn btn-primary text-white px-4']")).click();
-			
-				//Enter Name
-				d.findElement(By.id("firstName")).sendKeys("test");
-				//Enter LastName
-				d.findElement(By.id("lastName")).sendKeys("user");
-				//Enter email
-				d.findElement(By.xpath("(//input)[3]")).sendKeys("testuser568966@gmail.com");
-				//password
-				d.findElement(By.xpath("(//input[@class='form-control'])[4]")).sendKeys("Test@123");
-				//mobile number
-				d.findElement(By.xpath("//input[@maxlength='20']")).sendKeys("90123456786");
-				
-			//Click on Signup button
-			d.findElement(By.xpath("//button[@id='signup']")).click();	
-			
-			Thread.sleep(2000);
-			//Verify successful registration
-			
-			WebElement status = d.findElement(By.xpath("//h2[@id='status_title']"));
-			assertEquals(status.getText(),"Successfully Registered");
-			
-			//Refresh the page
-			
-			d.navigate().refresh();
-			
-			//Click on Proceed to Login
-			d.findElement(By.xpath("//a[@id='status_proceed']")).click();
-			
-			//Enter valid email
-			d.findElement(By.id("login_email")).sendKeys("testuser568966@gmail.com");
-			
-			//Enter password
-			d.findElement(By.id("login_password")).sendKeys("Test@123");
-			
-			//Click on Login
-			d.findElement(By.id("login_button")).click();
-			Thread.sleep(2000);
-			
-			// Verify the page
-			assertEquals(d.getTitle(),"GUVI | courses");
-	
-		d.quit();
-	}
-
-}
 
 
 
